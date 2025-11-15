@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"path": "../../../Application web dynamiques et interactives/tp/tp"
+		},
+		{
+			"path": "../../../../../Projets/HTML-CSS-JS__PROJECTS/Show-and-ride-password"
+		},
+		{
+			"path": "../../../Administration Hébergement Web/projet-docker"
+		},
+		{
+			"path": "../../../../../../../../wamp64/www/tp0_CDWFS"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../mortgage-repayment-calculator-main"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "tp0_CDWFS"
+	}
+}
