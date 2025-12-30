@@ -1,44 +1,48 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Class Salle
+ *
+ * @property string $num_sale
+ * @property int $contenance
+ * @property string $statut
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
+ * 
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Programmation> $programmations
+ *
+ * @package App\Models
+ */
 class Salle extends Model
-
 {
+	use HasFactory;
+	protected $table = 'salle';
+	protected $primaryKey = 'num_sale';
+	public $incrementing = false;
+	public $timestamps = true;
+	protected $casts = [
+		'contenance' => 'int'
+	];
 
-    // Nom de la table associée
+	protected $fillable = [
+		'num_sale',
+		'contenance',
+		'statut'
+	];
 
-    protected $table = 'salle';
-
-    // Clé primaire personnalisée
-
-    protected $primaryKey = 'num_sale';
-
-    // Indiquer que la clé primaire n'est pas auto-incrémentée
-
-    public $incrementing = false;
-
-    // Type de la clé primaire
-
-    protected $keyType = 'string';
-
-    // Colonnes autorisées pour la création/mise à jour en masse
-
-    protected $fillable = [
-
-        'num_sale',
-
-        'contenance',
-
-        'statut',
-
-    ];
-
-    // Active la gestion automatique des colonnes created_at et updated_at
-
-    public $timestamps = true;
-
+	public function programmations(): HasMany
+	{
+		return $this->hasMany(Programmation::class, 'num_salle', 'num_sale');
+	}
 }

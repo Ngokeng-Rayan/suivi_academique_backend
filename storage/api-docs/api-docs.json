@@ -1,0 +1,100 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Suivi Académique",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/filieres": {
+            "get": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Récupérer toutes les filières",
+                "description": "Liste toutes les filières",
+                "operationId": "1240bef162bd6966348eec9968e7d0ca",
+                "responses": {
+                    "200": {
+                        "description": "Liste des filières"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Créer une filière",
+                "description": "Créer une nouvelle filière",
+                "operationId": "e5313008bb0405f32bc0d40c3b634aec",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "code_filiere",
+                                    "label_filiere"
+                                ],
+                                "properties": {
+                                    "code_filiere": {
+                                        "type": "string",
+                                        "example": "INF01"
+                                    },
+                                    "label_filiere": {
+                                        "type": "string",
+                                        "example": "Informatique"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Filière créée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/api/filieres/{code_filiere}": {
+            "delete": {
+                "tags": [
+                    "Filières"
+                ],
+                "summary": "Supprimer une filière",
+                "description": "Supprimer une filière",
+                "operationId": "38b0ce4ef018399a2c2555594d2a7060",
+                "parameters": [
+                    {
+                        "name": "code_filiere",
+                        "in": "path",
+                        "description": "Code de la filière",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "INF01"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Filière supprimée"
+                    },
+                    "404": {
+                        "description": "Filière non trouvée"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Filières",
+            "description": "Endpoints liés aux filières"
+        }
+    ]
+}
